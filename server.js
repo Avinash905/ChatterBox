@@ -6,6 +6,7 @@ const chatRouter = require("./routes/chatRoutes");
 const messageRouter = require("./routes/messageRoutes");
 const cors = require("cors");
 const { Server } = require("socket.io");
+const path = require("path");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -17,6 +18,11 @@ app.use(express.json({ limit: "1mb" }));
 app.use("/api/user", userRouter);
 app.use("/api/chat", chatRouter);
 app.use("/api/message", messageRouter);
+app.use(express.static(path.join(__dirname, "./client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 // <--------------error handling middleware-------------->
 
