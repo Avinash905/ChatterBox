@@ -3,7 +3,7 @@
 <h3>Description :</h3> 
 This is a web application where you can chat with others.
 
-👉[Click here](https://chatterbox.onrender.com/) to check out the app.
+👉[Click here](https://chatterbox-main.onrender.com/) to check out the app.
 <br/>
 
 ### 📃Features :

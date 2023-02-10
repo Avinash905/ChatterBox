@@ -1,8 +1,8 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "homepage": "https://chatterbox.onrender.com",
-  "proxy": "https://chatterbox.onrender.com/api",
+  "homepage": "https://chatterbox-main.onrender.com",
+  "proxy": "https://chatterbox-main.onrender.com/api",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
