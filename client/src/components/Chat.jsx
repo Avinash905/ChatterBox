@@ -28,7 +28,6 @@ const Chat = () => {
   useEffect(() => {
     if (currentChat._id) {
       getAllMessages()
-      console.log('...')
     }
   }, [currentChat])
 

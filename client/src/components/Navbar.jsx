@@ -15,7 +15,7 @@ const Navbar = () => {
     const [search, setSearch] = useState('')
     const { id } = jwt_decode(localStorage.getItem("token"));
     const [searchedUsers, setSearchedUsers] = useState([])
-    const { userInfo, setUserInfo, setLoading } = useContext(AppContext)
+    const { userInfo, setUserInfo, setLoading, resetStates } = useContext(AppContext)
     const [modalOpen, setModalOpen] = useState(false)
 
     const searchBtn = async () => {
@@ -42,6 +42,7 @@ const Navbar = () => {
 
     const logout = () => {
         localStorage.removeItem('token');
+        resetStates()
         navigate('/')
         toast.success('Logged out successfully');
     }
