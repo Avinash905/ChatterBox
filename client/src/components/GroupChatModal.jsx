@@ -251,7 +251,7 @@ const GroupChatModal = ({ modalOpen, setModalOpen, type, group, setMyChats, myCh
 
     return (
         <>
-            {modalOpen && <Modal setModalOpen={setModalOpen} children={type === 'create' ? createChildren : updateChildren} handleClick={type === 'create' ? createNewGroup : removeFromGroup(id)} btnname={type === 'create' ? 'Create Group' : 'Leave Group'} />}
+            {modalOpen && <Modal setModalOpen={setModalOpen} children={type === 'create' ? createChildren : updateChildren} handleClick={type === 'create' ? createNewGroup : removeFromGroup} btnname={type === 'create' ? 'Create Group' : 'Leave Group'} id={id} />}
         </>
     )
 }
