@@ -1,0 +1,6 @@
+@import url(app.css);
+
+.chats__layout {
+  display: flex;
+  gap: 1rem;
+}

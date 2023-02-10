@@ -1,0 +1,25 @@
+@import url(app.css);
+
+.send-chat {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.react-input-emoji--container,
+.react-input-emoji--input {
+  font-size: 1rem !important;
+  font-family: var(--font-family) !important;
+}
+
+.chat__btn {
+  font-size: 0.9rem;
+  padding: 0.1rem 2rem;
+  font-weight: 500;
+  height: 40px;
+  width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+}

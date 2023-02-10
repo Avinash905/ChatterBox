@@ -1,0 +1,97 @@
+@import url(app.css);
+
+.mychats {
+  width: 25vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border-radius: 15px;
+  padding: 1rem 2rem;
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+  background-color: var(--black-color);
+}
+
+.mychats-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.create-group {
+  position: relative;
+  background-color: rgb(60, 60, 60);
+  padding: 0.5rem;
+  border-radius: 10px;
+  padding-right: 2rem;
+  cursor: pointer;
+}
+
+.plus__icon {
+  font-size: 1.3rem;
+  position: absolute;
+  top: 22%;
+  right: 3%;
+}
+
+.allusers {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.create-group__modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.create-group__modal input {
+  width: 60%;
+}
+
+.group-search__users {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 60%;
+}
+
+.selected-users {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.user-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  gap: 0.1rem;
+  background-color: var(--primary-color);
+  border-radius: 50px;
+  padding: 0.2rem 0.5rem;
+}
+
+.pill-close {
+  cursor: pointer;
+}
+
+.name-container {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.name-container input {
+  width: 100%;
+}
+
+.name-container button {
+  height: 100%;
+  padding: 0.85rem 0.5rem;
+}

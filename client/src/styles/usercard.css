@@ -1,0 +1,47 @@
+@import url(app.css);
+
+.usercard {
+  background-color: var(--light-bg-color);
+  display: flex;
+  gap: 1rem;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.usercard:hover {
+  background-color: var(--light-blue-color);
+}
+
+.selected-card {
+  background-color: var(--light-blue-color);
+}
+
+.usercard__image {
+  width: 15%;
+  border-radius: 15px;
+  position: relative;
+}
+
+.usercard__image img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.usercard__image span {
+  position: absolute;
+  top: 1%;
+  right: -8%;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+}
+
+.usercard__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.5rem;
+}

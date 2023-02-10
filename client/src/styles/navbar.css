@@ -1,0 +1,117 @@
+@import url(app.css);
+
+nav {
+  width: 100%;
+  height: 8vh;
+  background-color: var(--black-color);
+  border: 1px solid var(--secondary-color);
+  border-radius: 15px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.search {
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.search-input {
+  padding: 0.5rem 2.5rem;
+  color: var(--black-color);
+  border-radius: 50px;
+}
+
+.search svg {
+  position: absolute;
+  top: 30%;
+  left: 2%;
+  color: var(--black-color);
+}
+
+.search__btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  border-radius: 50px;
+}
+
+.searched-users {
+  position: absolute;
+  background-color: var(--black-color);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 0.5rem;
+  top: 110%;
+  left: 0.5%;
+  width: 19%;
+  z-index: 2;
+  border: 1px solid var(--secondary-color);
+}
+
+.search-card__image {
+  width: 10%;
+}
+
+.app__name {
+  font-size: 2rem;
+}
+
+.navbar__icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  flex: 1;
+}
+
+.bell-icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.navbar__icons span {
+  position: absolute;
+  top: 22%;
+  right: 11%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+}
+
+.arrow-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.profile__image {
+  width: 5%;
+  display: flex;
+}
+
+.profile__image img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.profile__modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.profile__modal img {
+  margin-bottom: 1rem;
+  width: 40%;
+  border-radius: 50%;
+}
