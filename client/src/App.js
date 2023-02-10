@@ -16,20 +16,19 @@ function App() {
   const { userInfo } = useContext(AppContext);
 
   const Protected = ({ children }) => {
-    if (!userInfo.length <= 0) {
+    if (!localStorage.getItem("token")) {
       return (
         <Navigate
           replace={true}
           to="/"
-        />
+        ></Navigate>
       );
     }
     return children;
   };
 
   const Public = ({ children }) => {
-    console.log(userInfo);
-    if (!userInfo.length <= 0) {
+    if (!localStorage.getItem("token")) {
       return children;
     }
     return (
@@ -46,15 +45,27 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Login />}
+          element={
+            <Public>
+              <Login />
+            </Public>
+          }
         />
         <Route
           path="/register"
-          element={<Register />}
+          element={
+            <Public>
+              <Register />
+            </Public>
+          }
         />
         <Route
           path="/chats"
-          element={<Chats />}
+          element={
+            <Protected>
+              <Chats />
+            </Protected>
+          }
         />
       </Routes>
     </Router>
