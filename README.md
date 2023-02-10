@@ -43,10 +43,6 @@ This is a web application where you can chat with others.
 
 <img src="./client/src/images/updategroup.png" alt='update group'/>
 
-### Adding new user
-
-<img src="./client/src/images/newuser.png" alt='add user'/>
-
 <hr/>
 
 ### Tools and technologies used :

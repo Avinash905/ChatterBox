@@ -11,7 +11,7 @@ const MyChats = () => {
   const { id } = jwt_decode(localStorage.getItem("token"));
   const [myChats, setMyChats] = useState([])
   const [modalOpen, setModalOpen] = useState(false)
-  const { loading, setCurrentChat } = useContext(AppContext)
+  const { setCurrentChat } = useContext(AppContext)
 
 
   const fetchAllChats = async () => {
@@ -21,7 +21,7 @@ const MyChats = () => {
 
   useEffect(() => {
     fetchAllChats()
-  }, [loading])
+  }, [])
 
 
   const clickFunc = (ele) => {
