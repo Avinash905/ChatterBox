@@ -5,7 +5,6 @@ const userRouter = require("./routes/userRoutes");
 const chatRouter = require("./routes/chatRoutes");
 const messageRouter = require("./routes/messageRoutes");
 const cors = require("cors");
-const { Server } = require("socket.io");
 const path = require("path");
 
 const app = express();
@@ -41,7 +40,7 @@ app.use((err, req, res, next) => {
 
 const server = app.listen(port, () => {});
 
-const io = new Server(server, {
+const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
     origin: process.env.ORIGIN,
@@ -60,8 +59,9 @@ io.on("connection", (socket) => {
 
   socket.on("new-message", (newMessage) => {
     newMessage.currentChat.users.forEach((user) => {
-      if (user === newMessage.data.senderId) return;
-      socket.to(user).emit("message-recieved", newMessage);
+      if (user._id === newMessage.data.senderId) return;
+
+      socket.in(user._id).emit("message-recieved", newMessage);
     });
   });
 

@@ -4,7 +4,9 @@ const Chat = require("../models/chatModel");
 //get all chats of a user
 const getChats = async (req, res, next) => {
   try {
-    const chats = await Chat.find({ users: { $in: req.user.id } });
+    const chats = await Chat.find({ users: { $in: req.user.id } }).populate(
+      "users"
+    );
     res.send(chats);
   } catch (error) {
     next(error);

@@ -15,13 +15,20 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  width: 40%;
   padding: 2rem;
   border: 1px solid var(--secondary-color);
   border-radius: 10px;
   color: var(--secondary-color);
   background-color: var(--black-color);
   position: relative;
+}
+
+.nav-profile-modal {
+  width: 450px;
+}
+
+.group-modal-width {
+  width: 450px;
 }
 
 .modal__content .btn {

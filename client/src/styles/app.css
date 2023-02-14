@@ -54,3 +54,12 @@ a {
 .btn:hover {
   background-color: var(--tertiary-color);
 }
+
+.loading {
+  height: 85vh;
+  width: 100vw;
+  font-size: 4rem;
+  color: var(--light-blue-color);
+  font-weight: 900;
+  letter-spacing: 2px;
+}

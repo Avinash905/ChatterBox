@@ -7,35 +7,44 @@ import toast from "react-hot-toast";
 axios.defaults.baseURL = process.env.REACT_APP_SERVER_DOMAIN;
 
 function Register() {
+  const [files, setFiles] = useState("");
   const [formDetails, setFormDetails] = useState({
     name: "",
     email: "",
     password: "",
     confpassword: "",
-    pic: "",
   });
   const navigate = useNavigate();
 
   const inputChange = async (e) => {
     const { name } = e.target;
-    if (name === "pic") {
-      const base64 = await convertToBase64(e.target.files[0]);
-      return setFormDetails({
-        ...formDetails,
-        pic: base64,
-      });
-    }
-
     return setFormDetails({
       ...formDetails,
       [name]: e.target.value,
     });
   };
 
+  const onUpload = (element) => {
+    if (element.type === "image/jpeg" || element.type === "image/png") {
+      const data = new FormData();
+      data.append("file", element);
+      data.append("upload_preset", "zenstore");
+      data.append("cloud_name", process.env.REACT_APP_CLOUDINARY_CLOUD_NAME);
+      fetch(process.env.REACT_APP_CLOUDINARY_BASE_URL, {
+        method: "POST",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => setFiles(data.url.toString()));
+    } else {
+      toast.error("Please select an image in jpeg or png format");
+    }
+  };
+
   const formSubmit = async (e) => {
     try {
       e.preventDefault();
-      let { name, pic, email, password, confpassword } = formDetails;
+      let { name, email, password, confpassword } = formDetails;
       if (!name || !email || !password || !confpassword) {
         return toast.error("Input field should not be empty");
       } else if (password.length < 5) {
@@ -43,13 +52,15 @@ function Register() {
       } else if (password !== confpassword) {
         return toast.error("Passwords do not match");
       }
-      if (!pic) {
-        pic = "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
+      if (!files) {
+        setFiles(
+          "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
+        );
       }
       const { data } = await toast.promise(
         axios.post("/user/register", {
           name,
-          pic,
+          pic: files,
           email,
           password,
         }),
@@ -66,24 +77,14 @@ function Register() {
     }
   };
 
-  const convertToBase64 = async (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
-
   return (
     <section className="register-section flex-center">
       <div className="register-container flex-center">
         <h2 className="form-heading">Sign Up</h2>
-        <form onSubmit={formSubmit} className="register-form">
+        <form
+          onSubmit={formSubmit}
+          className="register-form"
+        >
           <input
             type="text"
             name="name"
@@ -101,6 +102,14 @@ function Register() {
             onChange={inputChange}
           />
           <input
+            type="file"
+            name="pic"
+            className="form-input"
+            onChange={(e) => {
+              onUpload(e.target.files[0]);
+            }}
+          />
+          <input
             type="password"
             name="password"
             className="form-input"
@@ -116,19 +125,19 @@ function Register() {
             value={formDetails.confpassword}
             onChange={inputChange}
           />
-          <input
-            type="file"
-            name="pic"
-            className="form-input"
-            onChange={inputChange}
-          />
-          <button type="submit" className="btn form-btn">
+          <button
+            type="submit"
+            className="btn form-btn"
+          >
             sign up
           </button>
         </form>
         <p>
           Already a user?{" "}
-          <NavLink className="login-link" to={"/"}>
+          <NavLink
+            className="login-link"
+            to={"/"}
+          >
             Log in
           </NavLink>
         </p>
