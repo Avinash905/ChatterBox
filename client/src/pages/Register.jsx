@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 axios.defaults.baseURL = process.env.REACT_APP_SERVER_DOMAIN;
 
 function Register() {
+  const [loading, setLoading] = useState(false);
   const [files, setFiles] = useState("");
   const [formDetails, setFormDetails] = useState({
     name: "",
@@ -25,6 +26,7 @@ function Register() {
   };
 
   const onUpload = (element) => {
+    setLoading(true);
     if (element.type === "image/jpeg" || element.type === "image/png") {
       const data = new FormData();
       data.append("file", element);
@@ -36,7 +38,9 @@ function Register() {
       })
         .then((res) => res.json())
         .then((data) => setFiles(data.url.toString()));
+      setLoading(false);
     } else {
+      setLoading(false);
       toast.error("Please select an image in jpeg or png format");
     }
   };
@@ -52,7 +56,7 @@ function Register() {
       } else if (password !== confpassword) {
         return toast.error("Passwords do not match");
       }
-      if (!files) {
+      if (files === "") {
         setFiles(
           "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
         );
@@ -128,6 +132,7 @@ function Register() {
           <button
             type="submit"
             className="btn form-btn"
+            disabled={loading ? true : false}
           >
             sign up
           </button>
