@@ -12,7 +12,7 @@ const SendChat = ({ socket, setMessages, messages, setNewmsg }) => {
 
   const handleOnEnter = async () => {
     try {
-      if (!emoji) return;
+      if (emoji === "") return;
 
       const { data } = await axios.post(
         `/message/sendmessage/${id}`,
